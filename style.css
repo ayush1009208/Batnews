@@ -1,0 +1,211 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: red;
+    color: #fff;
+}
+
+.main-nav {
+    background-color: #000;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.company-logo img {
+    height: 50px;
+}
+
+.nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 15px;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links ul li {
+    cursor: pointer;
+    position: relative;
+    color: #fff;
+    transition: all 0.4s ease;
+}
+
+.nav-links ul li:hover {
+    color: #ff0000; 
+}
+
+.nav-links ul li:hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ff0000;
+    left: 0;
+    bottom: -5px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.news-input {
+    padding: 5px 10px;
+    border: 1px solid #ff0000; /* Red color */
+    background-color: #333;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.search-button {
+    padding: 5px 15px;
+    background-color: red;
+    border: none;
+    color: black;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: black;
+    color: red; 
+}
+
+.spinner {
+    width: 50px; 
+    height: 50px; 
+    background-image: url('Batman_Logo.svg.png'); 
+    background-size: contain; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    display: none;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+
+
+main {
+    margin-top: 20px;
+    padding-left: 15px; 
+    padding-right: 15px;
+} 
+
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    align-items: start;
+    
+}
+.card-content {
+    padding: 0px;
+}
+
+.newsdesc {
+    max-width: 400px;
+    color: black;
+}
+.half{
+    display: flex;
+
+}
+
+.custom-card {
+    width: 360px;
+    height: 400px !important;
+    padding: 0px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    background-color: black;
+}
+
+.custom-card:hover {
+    background-color: red;
+    box-shadow: 1px 1px 8px black;
+    transform: translateY(-4px);
+}
+
+.custom-card-header img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.custom-card-content {
+    padding: 12px;
+}
+
+.foot-nav{
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-bottom: 15px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    color: rgb(255, 243, 243) !important;
+    background-color:black;
+}
+
+.copyright{
+    color: rgb(249, 248, 248);
+    text-align: center;
+    background-color:black;
+    padding-top: 15px;
+    padding-bottom: 30px;
+}
+
+footer {
+    padding: 0 40px; /* Added padding */
+    background-color: black;
+}
+
+.big-image{
+    height: 648px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.big-image:hover{
+    transform: translateY(-4px);
+}
+
+.overlay-text {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position:absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-size: 65px;
+}
+
+.heading{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 55px;
+    color: #000;
+    text-align: center;
+    margin-top: 15px;
+}

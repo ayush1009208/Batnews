@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>News App</title>
+</head>
+<body>
+    <nav>
+        <div class="main-nav container flex">
+            <div class="half">
+                <a href="#" class="company-logo"><img src="Batman_Logo.svg.png" alt="Company Logo"></a>
+                <div class="nav-links">
+                    <ul class="navlinks">
+                        <li class="hover-link" data-query="BATMAN">BATMAN</li>
+                        <li class="hover-link" data-query="WONDER WOMAN">DC</li>
+                        <li class="hover-link" data-query="SUPERMAN">SUPERMAN</li>
+                        <li class="hover-link" data-query="JUSTICE">JUSTICE</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" class="news-input" placeholder="e.g. suicide-squad" id="search-bar">
+                <div class="spinner-container">
+                    <button class="search-button" id="search-button">Search</button>
+                    <div class="spinner" id="spinner"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="carousel">
+        <img class="big-image" src="peakpx (4).jpg" alt="">
+        <div class="overlay-text">THE KNIGHT</div>
+    </div>
+    <div class="heading">
+        BAT NEWS
+    </div>
+    <main>
+        <div class="cards-container container flex" id="cards-container"></div>
+        <button id="view-more-button" style="width: 100px; height: 25px; margin: 15px; background-color: red;border-radius: 5px;">View More</button>
+    </main>
+    <template id="template-news-card">
+        <div class="custom-card">
+            <div class="custom-card-header">
+                <img id="news-img" src="" alt="News Image">
+            </div>
+            <div class="custom-card-content">
+                <h3 id="news-title"></h3>
+                <h6 class="news-source" id="news-source"></h6>
+                <p id="news-desc" class="newsdesc"></p>
+            </div>
+        </div>
+    </template>
+    <footer class="feet">
+        <ul class="foot-nav">
+            <li><a href="#" style="color: aliceblue;">Home</a></li>
+            <li><a href="#" style="color: aliceblue;">Features</a></li>
+            <li><a href="#" style="color: aliceblue;">Pricing</a></li>
+            <li><a href="#" style="color: aliceblue;">FAQs</a></li>
+            <li><a href="#" style="color: aliceblue;">About</a></li>
+        </ul>
+        <hr>
+        <p class="copyright">© 2024 Company, Inc</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
