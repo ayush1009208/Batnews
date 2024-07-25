@@ -1,6 +1,6 @@
-const API_KEY = "7b866347507d492b9668881199265b68";
+const API_KEY = "6a9ff923b9a44de2b82bfc7d97bbff06";
 const url = "https://newsapi.org/v2/everything?q=";
-const articlesPerPage = 34; // Number of articles per page
+const articlesPerPage = 32; // Number of articles per page
 let currentPage = 1;
 let totalResults = 0;
 
@@ -30,26 +30,9 @@ async function fetchNews(query) {
         totalResults = data.totalResults;
         bindData(data.articles);
     } catch (error) {
-        console.error('Error fetching news:', error);
+        console.error('ETeri maa ki chut', error);
     }
 }
-async function fetchNews(query) {
-    try {
-        const res = await fetch(`${url}${query}&apiKey=${API_KEY}&pageSize=${articlesPerPage}&page=${currentPage}`);
-        const data = await res.json();
-        if (data.status === 'ok' && data.articles) {
-            totalResults = data.totalResults;
-            bindData(data.articles);
-        } else {
-            console.error('Error with API response:', data);
-            // Handle errors or empty responses here
-            bindData([]);
-        }
-    } catch (error) {
-        console.error('Error fetching news:', error);
-    }
-}
-
 
 function bindData(articles) {
     const cardsContainer = document.getElementById('cards-container');
