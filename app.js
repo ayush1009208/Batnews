@@ -33,6 +33,23 @@ async function fetchNews(query) {
         console.error('Error fetching news:', error);
     }
 }
+async function fetchNews(query) {
+    try {
+        const res = await fetch(`${url}${query}&apiKey=${API_KEY}&pageSize=${articlesPerPage}&page=${currentPage}`);
+        const data = await res.json();
+        if (data.status === 'ok' && data.articles) {
+            totalResults = data.totalResults;
+            bindData(data.articles);
+        } else {
+            console.error('Error with API response:', data);
+            // Handle errors or empty responses here
+            bindData([]);
+        }
+    } catch (error) {
+        console.error('Error fetching news:', error);
+    }
+}
+
 
 function bindData(articles) {
     const cardsContainer = document.getElementById('cards-container');
