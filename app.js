@@ -49,6 +49,9 @@ async function fetchNews(query) {
             throw new Error(`HTTP error! status: ${res.status}`);
         }
         const data = await res.json();
+        if (!data.articles) {
+            throw new Error('No articles found in the response');
+        }
         totalResults = data.totalResults;
         bindData(data.articles);
     } catch (error) {
@@ -63,6 +66,11 @@ function bindData(articles) {
 
     if (currentPage === 1) {
         cardsContainer.innerHTML = ''; 
+    }
+
+    if (!Array.isArray(articles)) {
+        console.error('Expected an array of articles, but got:', articles);
+        return;
     }
 
     articles.forEach(article => {
