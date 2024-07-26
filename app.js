@@ -1,6 +1,6 @@
 const API_KEY = "7b866347507d492b9668881199265b68";
 const url = "https://newsapi.org/v2/everything?q=";
-const articlesPerPage = 32; // Number of articles per page
+const articlesPerPage = 32;
 let currentPage = 1;
 let totalResults = 0;
 
@@ -14,15 +14,6 @@ document.getElementById('search-button').addEventListener('click', () => {
         fetchNews(query).finally(() => hideSpinner());
     }
 });
-function showSpinner() {
-    document.getElementById('spinner').style.display = 'block';
-    document.getElementById('search-button').disabled = true;
-}
-
-function hideSpinner() {
-    document.getElementById('spinner').style.display = 'none';
-    document.getElementById('search-button').disabled = false;
-}
 
 document.querySelectorAll('.hover-link').forEach(link => {
     link.addEventListener('click', (event) => {
@@ -34,8 +25,6 @@ document.querySelectorAll('.hover-link').forEach(link => {
     });
 });
 
-
-
 document.getElementById('view-more-button').addEventListener('click', () => {
     showSpinner();
     currentPage += 1;
@@ -43,14 +32,28 @@ document.getElementById('view-more-button').addEventListener('click', () => {
     fetchNews(query).finally(() => hideSpinner());
 });
 
+function showSpinner() {
+    document.getElementById('spinner').style.display = 'block';
+    document.getElementById('search-button').disabled = true;
+}
+
+function hideSpinner() {
+    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('search-button').disabled = false;
+}
+
 async function fetchNews(query) {
     try {
         const res = await fetch(`${url}${query}&apiKey=${API_KEY}&pageSize=${articlesPerPage}&page=${currentPage}`);
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
         const data = await res.json();
         totalResults = data.totalResults;
         bindData(data.articles);
     } catch (error) {
         console.error('Error fetching news', error);
+        alert('Failed to load news. Please try again later.');
     }
 }
 
