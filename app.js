@@ -1,4 +1,4 @@
-const API_KEY = "6a9ff923b9a44de2b82bfc7d97bbff06";
+const API_KEY = "7b866347507d492b9668881199265b68";
 const url = "https://newsapi.org/v2/everything?q=";
 const articlesPerPage = 32; // Number of articles per page
 let currentPage = 1;
@@ -9,18 +9,38 @@ window.addEventListener('load', () => fetchNews("BATMAN"));
 document.getElementById('search-button').addEventListener('click', () => {
     const query = document.getElementById('search-bar').value;
     if (query) {
+        showSpinner();
         currentPage = 1;
-        fetchNews(query);
+        fetchNews(query).finally(() => hideSpinner());
     }
 });
+function showSpinner() {
+    document.getElementById('spinner').style.display = 'block';
+    document.getElementById('search-button').disabled = true;
+}
+
+function hideSpinner() {
+    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('search-button').disabled = false;
+}
 
 document.querySelectorAll('.hover-link').forEach(link => {
     link.addEventListener('click', (event) => {
         event.preventDefault();
         const query = event.target.getAttribute('data-query');
+        showSpinner();
         currentPage = 1;
-        fetchNews(query);
+        fetchNews(query).finally(() => hideSpinner());
     });
+});
+
+
+
+document.getElementById('view-more-button').addEventListener('click', () => {
+    showSpinner();
+    currentPage += 1;
+    const query = document.getElementById('search-bar').value;
+    fetchNews(query).finally(() => hideSpinner());
 });
 
 async function fetchNews(query) {
@@ -30,7 +50,7 @@ async function fetchNews(query) {
         totalResults = data.totalResults;
         bindData(data.articles);
     } catch (error) {
-        console.error('ETeri maa ki chut', error);
+        console.error('Error fetching news', error);
     }
 }
 
@@ -74,9 +94,3 @@ function fillDataInCard(cardClone, article) {
         window.open(article.url, "_blank");
     });
 }
-
-document.getElementById('view-more-button').addEventListener('click', () => {
-    currentPage += 1;
-    const query = document.getElementById('search-bar').value;
-    fetchNews(query);
-});

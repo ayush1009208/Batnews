@@ -89,13 +89,17 @@ body {
     background-position: center; 
     background-repeat: no-repeat; 
     display: none;
-    animation: spin 1s linear infinite;
+    animation: randomSpin 1s infinite linear;
 }
 
-@keyframes spin {
+@keyframes randomSpin {
     0% { transform: rotate(0deg); }
+    25% { transform: rotate(90deg); }
+    50% { transform: rotate(180deg); }
+    75% { transform: rotate(270deg); }
     100% { transform: rotate(360deg); }
 }
+
 
 .spinner-container {
     display: flex;
@@ -103,8 +107,6 @@ body {
     align-items: center;
     height: 50px;
 }
-
-
 
 main {
     margin-top: 20px;
@@ -125,12 +127,12 @@ main {
 }
 
 .newsdesc {
+    padding-top: 15px;
     max-width: 400px;
     color: black;
 }
 .half{
     display: flex;
-
 }
 
 .custom-card {
@@ -204,7 +206,7 @@ footer {
 
 .heading{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 55px;
+    font-size: 65px;
     color: #000;
     text-align: center;
     margin-top: 15px;
